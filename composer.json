@@ -1,0 +1,17 @@
+{
+  "name": "alfonso/modbus",
+  "autoload": {
+    "psr-4": {
+      "Alfonso\\Modbus\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Alfon5000",
+      "email": "alfonlai97@gmail.com"
+    }
+  ],
+  "require": {
+    "aldas/modbus-tcp-client": "^3.4"
+  }
+}

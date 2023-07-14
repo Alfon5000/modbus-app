@@ -1,0 +1,68 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "53788ee3b85f1ee3a0a87b795151d497",
+    "packages": [
+        {
+            "name": "aldas/modbus-tcp-client",
+            "version": "3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aldas/modbus-tcp-client.git",
+                "reference": "17c6e5a433494dc4ff13eb4fae7fbfe77bf8b64b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aldas/modbus-tcp-client/zipball/17c6e5a433494dc4ff13eb4fae7fbfe77bf8b64b",
+                "reference": "17c6e5a433494dc4ff13eb4fae7fbfe77bf8b64b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.10.18",
+                "phpunit/phpunit": "^9.6.9",
+                "psr/log": "^1.1.4",
+                "react/child-process": "^0.6.5",
+                "react/datagram": "^1.9",
+                "react/socket": "^1.13"
+            },
+            "suggest": {
+                "psr/log": "Required for using the Log middleware with BinaryStreamConnection"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ModbusTcpClient\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Modbus TCP protocol client library",
+            "keywords": [
+                "modbus"
+            ],
+            "support": {
+                "issues": "https://github.com/aldas/modbus-tcp-client/issues",
+                "source": "https://github.com/aldas/modbus-tcp-client/tree/3.4.0"
+            },
+            "time": "2023-06-14T19:01:29+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}
