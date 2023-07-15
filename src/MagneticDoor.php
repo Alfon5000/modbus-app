@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . './DbConnection.php';
+require_once __DIR__ . './ModbusConnection.php';
 require_once __DIR__ . './TelegramMessage.php';
 
 use ModbusTcpClient\Packet\ResponseFactory;
@@ -11,10 +12,7 @@ use ModbusTcpClient\Packet\ModbusFunction\ReadInputDiscretesRequest;
 function insert_magnetic_door($sensor_id)
 {
   // Modbus connection
-  $connection = BinaryStreamConnection::getBuilder()
-    ->setHost('192.168.101.149')
-    ->setPort(502)
-    ->build();
+  $connection = connect_to_modbus();
 
   // Get database connection
   $db_connection = connect_to_database();
@@ -44,11 +42,11 @@ function insert_magnetic_door($sensor_id)
 
       // Check magnetic door status
       if ($row['status'] != $status) {
-        $insert_query = "INSERT INTO magnetic_doors (sensor_id, status, description, created_at, updated_at) VALUES ($status, '$description', NOW(), NOW())";
+        $insert_query = "INSERT INTO magnetic_doors (sensor_id, status, description, created_at, updated_at) VALUES ($sensor_id, $status, '$description', NOW(), NOW())";
         $db_connection->query($insert_query);
       }
     } else {
-      $insert_query = "INSERT INTO magnetic_doors (sensor_id, status, description, created_at, updated_at) VALUES ($status, '$description', NOW(), NOW())";
+      $insert_query = "INSERT INTO magnetic_doors (sensor_id, status, description, created_at, updated_at) VALUES ($sensor_id, $status, '$description', NOW(), NOW())";
       $db_connection->query($insert_query);
     }
 
@@ -61,8 +59,8 @@ function insert_magnetic_door($sensor_id)
       // send_telegram_message($magnetic_door_message);
     }
   } catch (Exception $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-    // echo $exception->getTraceAsString() . PHP_EOL;
+    // echo $exception->getMessage() . PHP_EOL;
+    echo $exception->getTraceAsString() . PHP_EOL;
   } finally {
     // Close all connection
     $connection->close();

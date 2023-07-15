@@ -2,19 +2,16 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . './DbConnection.php';
+require_once __DIR__ . './ModbusConnection.php';
 require_once __DIR__ . './TelegramMessage.php';
 
 use ModbusTcpClient\Packet\ResponseFactory;
-use ModbusTcpClient\Network\BinaryStreamConnection;
 use ModbusTcpClient\Packet\ModbusFunction\ReadInputRegistersRequest;
 
 function insert_temperature_humidity($sensor_id, $location, $max_temp = 28, $min_temp = 22, $max_hum = 55, $min_hum = 40)
 {
   // Connect to Modbus host
-  $connection = BinaryStreamConnection::getBuilder()
-    ->setHost('192.168.101.149')
-    ->setPort(502)
-    ->build();
+  $connection = connect_to_modbus();
 
   // Get database connection
   $db_connection = connect_to_database();
@@ -51,8 +48,8 @@ function insert_temperature_humidity($sensor_id, $location, $max_temp = 28, $min
       // send_telegram_message($humidity_message);
     }
   } catch (Exception $exception) {
-    echo $exception->getMessage() . PHP_EOL;
-    // echo $exception->getTraceAsString() . PHP_EOL;
+    // echo $exception->getMessage() . PHP_EOL;
+    echo $exception->getTraceAsString() . PHP_EOL;
   } finally {
     // Close all connection
     $connection->close();
