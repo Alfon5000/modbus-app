@@ -30,7 +30,7 @@ function insert_temperature_humidity($sensor_id, $location, $max_temp = 28, $min
     $humidity = $response[1]->getInt16() / 10;
 
     // Insert data to database
-    $insert_query = "INSERT INTO temperature_humidities (temperature, humidity, sensor_id, created_at) VALUES ($temperature, $humidity, $sensor_id, NOW())";
+    $insert_query = "INSERT INTO temperature_humidities (temperature, humidity, sensor_id, created_at, updated_at) VALUES ($temperature, $humidity, $sensor_id, NOW(), NOW())";
     $db_connection->query($insert_query);
 
     // Insert temperature notifications
