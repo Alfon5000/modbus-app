@@ -6,7 +6,6 @@ require_once __DIR__ . './ModbusConnection.php';
 require_once __DIR__ . './TelegramMessage.php';
 
 use ModbusTcpClient\Packet\ResponseFactory;
-use ModbusTcpClient\Network\BinaryStreamConnection;
 use ModbusTcpClient\Packet\ModbusFunction\ReadInputDiscretesRequest;
 
 function insert_smoke_detector($sensor_id)
@@ -52,11 +51,12 @@ function insert_smoke_detector($sensor_id)
 
     // Insert smoke detector notifications
     $smoke_detector_message = 'There is smoke in the server room';
+    $telegram_message = 'Peringatan! ruang server mendeteksi asap pada tanggal ' . date('Y-m-d') . ' pukul ' . date('H:i:s');
 
     if ($status === 1) {
       $insert_query = "INSERT INTO notifications (message, is_read, created_at, updated_at) VALUES ('$smoke_detector_message' , 0, NOW(), NOW())";
       $db_connection->query($insert_query);
-      // send_telegram_message($smoke_detector_message);
+      send_telegram_message($telegram_message);
     }
   } catch (Exception $exception) {
     echo $exception->getMessage() . PHP_EOL;

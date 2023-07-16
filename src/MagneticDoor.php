@@ -6,7 +6,6 @@ require_once __DIR__ . './ModbusConnection.php';
 require_once __DIR__ . './TelegramMessage.php';
 
 use ModbusTcpClient\Packet\ResponseFactory;
-use ModbusTcpClient\Network\BinaryStreamConnection;
 use ModbusTcpClient\Packet\ModbusFunction\ReadInputDiscretesRequest;
 
 function insert_magnetic_door($sensor_id)
@@ -52,11 +51,12 @@ function insert_magnetic_door($sensor_id)
 
     // Insert magnetic door notifications
     $magnetic_door_message = 'The server room door is open';
+    $telegram_message = 'Informasi: pintu ruang server terbuka pada tanggal ' . date('Y-m-d') . ' pukul ' . date('H:i:s');
 
     if ($status === 1) {
       $insert_query = "INSERT INTO notifications (message, is_read, created_at, updated_at) VALUES ('$magnetic_door_message' , 0, NOW(), NOW())";
       $db_connection->query($insert_query);
-      // send_telegram_message($magnetic_door_message);
+      send_telegram_message($telegram_message);
     }
   } catch (Exception $exception) {
     echo $exception->getMessage() . PHP_EOL;
