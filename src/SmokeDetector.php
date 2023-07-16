@@ -59,8 +59,8 @@ function insert_smoke_detector($sensor_id)
       // send_telegram_message($smoke_detector_message);
     }
   } catch (Exception $exception) {
-    // echo $exception->getMessage() . PHP_EOL;
-    echo $exception->getTraceAsString() . PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
+    // echo $exception->getTraceAsString() . PHP_EOL;
   } finally {
     // Close all connection
     $connection->close();

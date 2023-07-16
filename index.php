@@ -6,7 +6,7 @@ require_once __DIR__ . '/src/MagneticDoor.php';
 require_once __DIR__ . '/src/SmokeDetector.php';
 require_once __DIR__ . '/src/TemperatureHumidity.php';
 
-$interval = 2;
+$interval = 1;
 
 while (true) {
   insert_magnetic_door(5);

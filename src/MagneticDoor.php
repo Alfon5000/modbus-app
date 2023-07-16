@@ -59,8 +59,8 @@ function insert_magnetic_door($sensor_id)
       // send_telegram_message($magnetic_door_message);
     }
   } catch (Exception $exception) {
-    // echo $exception->getMessage() . PHP_EOL;
-    echo $exception->getTraceAsString() . PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
+    // echo $exception->getTraceAsString() . PHP_EOL;
   } finally {
     // Close all connection
     $connection->close();

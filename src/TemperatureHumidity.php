@@ -48,8 +48,8 @@ function insert_temperature_humidity($sensor_id, $location, $max_temp = 28, $min
       // send_telegram_message($humidity_message);
     }
   } catch (Exception $exception) {
-    // echo $exception->getMessage() . PHP_EOL;
-    echo $exception->getTraceAsString() . PHP_EOL;
+    echo $exception->getMessage() . PHP_EOL;
+    // echo $exception->getTraceAsString() . PHP_EOL;
   } finally {
     // Close all connection
     $connection->close();
