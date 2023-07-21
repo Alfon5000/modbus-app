@@ -1,9 +1,9 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . './DbConnection.php';
-require_once __DIR__ . './ModbusConnection.php';
-require_once __DIR__ . './TelegramMessage.php';
+require_once __DIR__ . '/DbConnection.php';
+require_once __DIR__ . '/ModbusConnection.php';
+require_once __DIR__ . '/TelegramMessage.php';
 
 use ModbusTcpClient\Packet\ResponseFactory;
 use ModbusTcpClient\Packet\ModbusFunction\ReadInputDiscretesRequest;

@@ -4,8 +4,8 @@ function connect_to_database()
 {
   // Database configurations
   $hostname = '127.0.0.1';
-  $username = 'root';
-  $password = '';
+  $username = 'admin';
+  $password = 'admin';
   $database = 'dcim';
 
   // Connect to database
