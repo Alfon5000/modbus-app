@@ -40,7 +40,7 @@ function insert_smoke_detector($sensor_id)
       $row = $result->fetch_assoc();
 
       // Check magnetic door status
-      if ($row['status'] != $status) {
+      if ($row['status'] !== $status) {
         $insert_query = "INSERT INTO smoke_detectors (sensor_id, status, description, created_at, updated_at) VALUES ($sensor_id, $status, '$description', NOW(), NOW())";
         $db_connection->query($insert_query);
       }

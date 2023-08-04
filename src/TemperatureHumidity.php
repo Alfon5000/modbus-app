@@ -8,7 +8,7 @@ require_once __DIR__ . '/TelegramMessage.php';
 use ModbusTcpClient\Packet\ResponseFactory;
 use ModbusTcpClient\Packet\ModbusFunction\ReadInputRegistersRequest;
 
-function insert_temperature_humidity($sensor_id, $location, $min_temp = 20, $max_temp = 35, $min_hum = 28, $max_hum = 55)
+function insert_temperature_humidity($sensor_id, $location, $min_temp = 20, $max_temp = 35, $min_hum = 28, $max_hum = 62)
 {
   // Connect to Modbus host
   $connection = connect_to_modbus();
